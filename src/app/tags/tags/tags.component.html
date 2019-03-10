@@ -1,0 +1,7 @@
+<div class="topics">
+  <ng-container *ngFor="let slashTag of tags">
+    <a [innerHTML]="slashTag.tagDisplay | TagDisplay" 
+      [ngStyle]="{'font-size':FontSize(slashTag.tagWeight),'padding-right':'10px'}"
+      (click)="clickNewTopic(slashTag.tagDisplay)"></a>
+  </ng-container>
+</div>

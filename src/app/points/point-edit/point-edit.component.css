@@ -1,0 +1,19 @@
+form { border: solid 2px green; }
+
+mat-checkbox {padding: 20px;}
+
+.pad { padding:10px; }
+
+
+/* 
+    Unexpected vertical scrollbar when edit last point on page 
+    Can remove by removing following in developer tools, but doesn't work in css overide
+*/
+
+/* .mat-form-field-appearance-legacy .mat-form-field-wrapper{
+    padding-bottom: 0em !important; 
+}
+
+.mat-form-field-wrapper { 
+    padding-bottom: 0em !important; 
+} */

@@ -1,0 +1,6 @@
+<mat-form-field>
+  <input matInput [ngModel]="thisDate | date:'dd MMM yyyy'" disabled [placeholder]="placeholder">
+  <input matInput [(ngModel)]="thisDate" [hidden]='true' [matDatepicker]="picker" placeholder="Choose a date" name="thisDate">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>

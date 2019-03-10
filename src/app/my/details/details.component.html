@@ -1,0 +1,126 @@
+<div fxLayoutAlign="center">
+
+  <div fxLayout="row wrap" class="profile">
+
+    <div fxFlex="30">
+      <span class="align-middle">
+        Email Address
+      </span>
+    </div>
+
+    <div fxFlex="40">
+      <span class="align-middle">
+        {{ profile.email }}
+      </span>
+    </div>
+
+    <div fxFlex="30"></div>
+
+
+    <div fxFlex="30">
+      <span class="align-middle">
+        name or alias ("by")
+      </span>
+    </div>
+
+    <div fxFlex="40">
+      <span class="align-middle" *ngIf="!editing">
+        {{ profile.alias }}
+      </span>
+      <mat-form-field *ngIf="editing">
+        <input matInput placeholder="your alias (points 'by')" [(ngModel)]="profile.alias" name="by" required
+          #tvAlias="ngModel" type="text">
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="30"></div>
+
+
+    <div fxFlex="30">
+      <span class="align-middle">
+        Home Country
+      </span>
+    </div>
+
+    <div fxFlex="40">
+
+      <span class="align-middle" *ngIf="!editing">
+        {{ profile.country }}
+      </span>
+
+      <mat-form-field *ngIf="editing && !editNewCountry">
+        <mat-select (ngModelChange)="onCountrySelect($event)" name="selectCountry" [(ngModel)]="profile.countryID"
+          placeholder="your home country">
+          <mat-option *ngFor="let country of countries" [value]="country.Key">{{ country.Value }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="editing && editNewCountry">
+        <input matInput placeholder="your home country" [(ngModel)]="profile.country" name="country" required
+          #tvCountry="ngModel" type="text">
+      </mat-form-field>
+
+    </div>
+
+    <div fxFlex="30">
+      <button mat-stroked-button (click)="newCountry()" *ngIf="editing && !editNewCountry && !editNewCity">
+        <mat-icon>add_circle_outline</mat-icon>
+        new country
+      </button>
+    </div>
+
+
+    <div fxFlex="30" *ngIf="!editNewCountry">
+      <span class="align-middle">
+        Home City
+      </span>
+    </div>
+
+    <div fxFlex="40" *ngIf="!editNewCountry">
+      <span *ngIf="!editing" class="align-middle">{{ profile.city }}</span>
+      <mat-form-field *ngIf="editing && !editNewCity">
+        <mat-select (ngModelChange)="onCitySelect($event)" name="selectCity" [(ngModel)]="profile.cityID"
+          placeholder="your home city">
+          <mat-option *ngFor="let city of cities" [value]="city.Key">{{ city.Value }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field *ngIf="editNewCity">
+        <input matInput placeholder="your home city" [(ngModel)]="profile.city" name="city" required #tvCity="ngModel"
+          type="text">
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="30" *ngIf="!editNewCountry">
+      <button mat-stroked-button (click)="newCity()" *ngIf="editing && !editNewCountry && !editNewCity">
+        <mat-icon>add_circle_outline</mat-icon>
+        new city
+      </button>
+    </div>
+
+
+    <div fxFlex="30"></div>
+
+    <div fxFlex="70" *ngIf="!editing">
+      <button mat-stroked-button (click)="edit()">
+        <mat-icon>edit</mat-icon>
+        edit
+      </button>
+    </div>
+
+    <div fxFlex="70" *ngIf="editing">
+
+      <button mat-stroked-button (click)="save()">
+        <mat-icon>save</mat-icon>
+        save
+      </button>
+
+      <button mat-stroked-button (click)="cancel()">
+        <mat-icon>cancel</mat-icon>
+        cancel
+      </button>
+
+      {{ success }}
+
+    </div>
+
+  </div>

@@ -1,0 +1,18 @@
+/*Import theming functions*/
+/*@import '~@angular/material/theming';*/
+
+.candy-carousel {
+  /*Get the default hue for a palette. color: mat-color($primary);*/
+  /*color: mat-color($primary);*/
+  /*Get a specific hue for a palette. // See https://material.io/archive/guidelines/style/color.html#color-color-palette for hues. background-color: mat-color($accent, 300);*/
+  /*background-color: mat-color($accent, 300);*/
+  /*Get a relative color for a hue ('lighter' or 'darker') outline-color: mat-color($accent, lighter);*/
+  /*outline-color: mat-color($accent, lighter);*/
+  /*Get a constrast color for a hue by adding `-contrast` to any other key. border-color: mat-color($primary, '100-constrast');*/
+  /*border-color: mat-color($primary, '100-constrast');*/
+}
+
+.highlight {
+  background-color: #c5cae9;
+  /* https://material-ui.com/style/color/ */
+}

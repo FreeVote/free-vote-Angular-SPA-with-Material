@@ -1,0 +1,89 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+  margin: 0px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+div.toolbar { background-color:whitesmoke; padding:0px 10px 10px 10px;}
+div.toolbar button { margin-top:10px ! important; }
+div.toolbar mat-form-field { margin-bottom:-20px; } /* Ha won that fight! */
+
+
+/* align-middle is a Material class???
+https://daemonite.github.io/material/docs/4.1/utilities/vertical-align/ ???? 
+https://css-tricks.com/centering-css-complete-guide/ */
+.align-middle{
+  height: 40px;
+  line-height: 40px;
+  white-space: nowrap;
+}
+
+.center{ text-align: center; }
+
+button + span { margin-left: 5px; }
+.btn { margin-right: 10px; }
+
+a {color: #3700b3;}
+a + a { margin-left: 5px; }
+
+.b { font-weight:bold; }
+
+
+
+/* DO NOT MOVE UGC styles to component */
+/* injected content without view encapsulation None */
+/* https://stackoverflow.com/questions/36265026/angular-2-innerhtml-styling */
+
+    .ugc.xs,  .ugc.sm{ margin: 0 12px; }
+
+    .ugc p{ font-size: larger; }
+    .ugc.xs p{ font-size: medium; }
+
+    .ugc.xs h1 { font-size:x-large; }
+
+    .ugc img {
+      width: 100%;
+      height: auto;
+    }
+    
+    .tags { margin-top:20px; }
+
+    .fv-error{ color: red; }
+
+    .Feedback * {
+      line-height: 100%;
+      vertical-align: middle;
+    }
+
+/* Validation, Errors */
+
+    /* [attribute selector] */
+    /* .ng-valid[required]:not(ckeditor), .ng-valid.required  {
+      border-left: 5px solid #42A948;  green 
+    }
+    */
+
+    /* .ng-invalid.ng-touched:not(form):not(ckeditor)  { */
+      /* border-left: 5px solid #a94442; red */
+    /* }  */
+
+.topics {
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+/*passive link input Angular https://stackoverflow.com/questions/35639174/passive-link-in-angular-2-a-href-equivalent*/
+.topics a {
+  color: #3F51B5;
+  text-decoration: none;
+  cursor: pointer
+}
+
+.topics a:hover {
+  text-decoration: underline;
+}

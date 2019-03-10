@@ -1,0 +1,33 @@
+<!-- 
+  Tab contents can be lazy loaded by declaring the body in a ng-template with the matTabContent attribute.
+  https://material.angular.io/components/tabs/overview
+-->
+
+<mat-tab-group mat-stretch-tabs [(selectedIndex)]="tabIndex" (selectedTabChange)="tabChanged($event)">
+
+  <mat-tab label="recent">
+    <ng-template matTabContent>
+      <app-tags [Type]="TagCloudTypes.Following" (newOnTopic)="newOnTopic($event)"></app-tags>
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab label="trending">
+    <ng-template matTabContent>
+      <app-tags [Type]="TagCloudTypes.Trending" (newOnTopic)="newOnTopic($event)"></app-tags>
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab label="by">
+    <ng-template matTabContent>
+      <app-by (newByAlias)="newByAlias($event)" (newOnTopic)="newOnTopic($event)"></app-by>
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab label="{{ onTopic }}">
+    <ng-template matTabContent>
+      <app-points [pointSelectionType]="pointSelectionType" [byAlias]="byAlias" [onTopic]="onTopic"
+      (newTopic)="newTopic($event)" [(reselect)]="reselect"></app-points>
+    </ng-template>
+  </mat-tab>
+
+</mat-tab-group>

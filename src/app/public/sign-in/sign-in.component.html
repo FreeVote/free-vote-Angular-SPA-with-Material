@@ -1,0 +1,89 @@
+<form (ngSubmit)="onSubmit()">
+
+  <div fxLayout="row">
+
+    <div fxFlex></div>
+
+    <div class="signIn">
+
+
+      <div>
+        <mat-form-field fxFill>
+          <input matInput placeholder="email" [(ngModel)]="email" type="email" name="email" #tvEmail="ngModel" required
+            email>
+        </mat-form-field>
+      </div>
+
+      <div *ngIf="router.url==='/sign-in'">
+        <mat-form-field fxFill>
+          <input matInput placeholder="password" [(ngModel)]="password" name="password" required #tvPassword="ngModel"
+            [type]="passwordView">
+        </mat-form-field>
+      </div>
+
+
+      <div fxLayout fxLayout.xs="column" fxLayoutGap="20px">
+
+        <div>
+          <button mat-stroked-button [disabled]="tvEmail.touched && tvEmail.invalid">
+            <mat-icon>person</mat-icon>
+            {{router.url=='/sign-in'?'sign in':'join'}}
+          </button>
+        </div>
+
+        <div>
+          <button mat-stroked-button *ngIf="router.url==='/sign-in'" type="button" (click)="view()">
+            <mat-icon>{{ passwordVisibility }}</mat-icon>
+            {{ passwordViewText }}
+          </button>
+        </div>
+
+        <div>
+          <button mat-stroked-button *ngIf="router.url==='/sign-in'" type="button" (click)="resetPassword()">
+            <mat-icon>swap_horiz</mat-icon>
+            reset password
+          </button>
+        </div>
+
+      </div>
+
+
+      <div *ngIf="registrationSuccess" class="Feedback">
+        <mat-icon class="align-middle">done</mat-icon>
+        <span class="align-middle">
+          {{ signInMessage }}
+        </span>
+        <p class="date">{{ dateTime }} </p>
+      </div>
+
+      <div *ngIf="registrationSuccess" class="Feedback">
+        Please confirm your email address and set a password
+        by clicking on the link sent in an email to {{ email }}
+      </div>
+
+      <div *ngIf="!registrationSuccess && signInMessage" class="Feedback">
+        <mat-icon class="align-middle">error_outline</mat-icon>
+        <span class="align-middle">
+          {{ signInMessage }}
+        </span>
+        <p class="date">{{ dateTime }} </p>
+      </div>
+
+      <div *ngIf="requestPending" class="Feedback">
+        <div class="IB">signing in ...</div>
+        <div class="IB spinner">
+          <mat-spinner diameter="20"></mat-spinner>
+        </div>
+      </div>
+
+      <mat-error *ngIf="tvEmail.touched && tvEmail.invalid">
+        email is required
+      </mat-error>
+
+    </div>
+
+    <div fxFlex></div>
+
+  </div>
+
+</form>

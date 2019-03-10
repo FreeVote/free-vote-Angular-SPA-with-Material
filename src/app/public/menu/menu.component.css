@@ -1,0 +1,10 @@
+.main-toolbar button{ 
+    color:white;
+}
+
+.main-toolbar-xs button{ 
+    min-width:40px;
+    margin:0;
+}
+
+.main-toolbar button.active  { color:yellow; }

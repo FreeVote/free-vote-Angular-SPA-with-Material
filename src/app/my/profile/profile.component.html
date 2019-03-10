@@ -1,0 +1,36 @@
+<!-- 
+  Tab contents can be lazy loaded by declaring the body in a ng-template with the matTabContent attribute.
+  https://material.angular.io/components/tabs/overview
+-->
+
+<div class="core">
+
+  <mat-tab-group mat-stretch-tabs [(selectedIndex)]="tabIndex" (selectedTabChange)="tabChanged($event)">
+
+    <mat-tab label="details">
+      <ng-template matTabContent>
+        <div [ngClass.lt-md]="'coresmall MT'" [ngClass.gt-sm]="'MT'">
+          <app-details></app-details>
+        </div>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab label="groups">
+      <ng-template matTabContent>
+          <div [ngClass.lt-md]="'coresmall MT'" [ngClass.gt-sm]="'MT'">
+          <app-group-membership></app-group-membership>
+        </div>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab label="password">
+      <ng-template matTabContent>
+          <div [ngClass.lt-md]="'coresmall MT'" [ngClass.gt-sm]="'MT'">
+          <app-password></app-password>
+        </div>
+      </ng-template>
+    </mat-tab>
+
+  </mat-tab-group>
+
+</div>

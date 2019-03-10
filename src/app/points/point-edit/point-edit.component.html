@@ -1,0 +1,92 @@
+<!--
+(change)="onChange($event)" 
+(editorChange)="onEditorChange($event)" 
+(ready)="onReady($event)" 
+(focus)="onFocus($event)" 
+(blur)="onBlur($event)"
+(contentDom)="onContentDom($event)" (fileUploadRequest
+)="onFileUploadRequest($event)"
+-->
+
+<form (ngSubmit)="onSubmit()" #formPoint="ngForm">
+
+  <ckeditor [(ngModel)]="point.pointHTML" name="point" [config]="config" [readonly]="false" debounce="250" required
+    #tvPoint="ngModel" (blur)="onCKEBlur()">
+  </ckeditor>
+
+
+  <div class="pad">
+    <div fxLayout="column" fxLayoutAlign="space-around">
+
+      <div>
+        <div [@slideInOut]="quoteSourceAnimationState">
+          <mat-form-field fxFill>
+            <input matInput placeholder="quote source" [(ngModel)]="point.source" name="quoteSource">
+          </mat-form-field>
+          <mat-form-field fxFill>
+            <input matInput placeholder="web address" [(ngModel)]="point.url" name="quoteURL">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div>
+        <div [@slideInOut]="videoAnimationState">
+          <mat-form-field fxFill>
+            <input matInput placeholder="YouTube video id" [(ngModel)]="point.youTubeID" name="youTubeID">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div>
+        <app-topic-edit class="topics" [(Topics)]="point.slashTags"></app-topic-edit>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="toolbar">
+
+    <!-- Using [(ngModel)] is the correct way to do this 
+      https://stackoverflow.com/questions/46000950/angular-4-setting-selected-option-in-dropdown -->
+    <mat-form-field>
+      <mat-select (ngModelChange)="onPointTypeChange($event)" name="pt" [(ngModel)]="point.pointTypeID">
+        <mat-option *ngFor="let pointType of pointTypes" [value]="pointType.Key">{{ pointType.Value }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-checkbox [(ngModel)]="point.draft" name="draftPoint">
+      draft
+    </mat-checkbox>
+
+    <button *ngIf="videoAnimationState!='in'" mat-stroked-button type="button" (click)="addVideo()">
+      <mat-icon>play_circle_filled</mat-icon>
+      add video
+    </button>
+
+    <button *ngIf="videoAnimationState=='in'" mat-stroked-button type="button" (click)="removeVideo()">
+      <mat-icon>clear</mat-icon>
+      remove video
+    </button>
+
+    <button mat-stroked-button>
+      <mat-icon>save</mat-icon>
+      save
+    </button>
+
+    <button mat-stroked-button type="button" (click)="Cancel()">
+      <mat-icon>cancel</mat-icon>
+      cancel
+    </button>
+
+    <span class="fv-error" *ngIf="userTouched && !tvPoint.valid">
+      Point text is required
+    </span>
+
+    <span class="fv-error" *ngIf="error != ''">
+      {{ error }}
+    </span>
+
+  </div>
+
+</form>

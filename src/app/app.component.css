@@ -1,0 +1,32 @@
+
+
+main .content, .title div{ 
+  width:100%;
+  max-width:940px;
+  margin-bottom:40px; 
+}
+
+footer{
+  position:fixed;
+  bottom:0px;
+  width:100%;
+  z-index: 100;
+}
+
+.copyright { 
+    margin-left: 10px; 
+    margin-right: 10px;
+}
+
+h1 { font-size:1.5em;}
+
+footer .x-small { font-size:x-small; }
+footer .small  { font-size:small; }
+footer .gt-small { font-size:medium; }
+
+/*title, subtile, menu, header, footer background-color*/
+.title {background-color:black; color:white;}
+.pagetitle{background-color:#279FBB; color:white;}
+.subtitle{background-color:#070707; color:white;}
+.menu{background-color:#333333; color:white;}
+footer{background-color:black; color:white;}

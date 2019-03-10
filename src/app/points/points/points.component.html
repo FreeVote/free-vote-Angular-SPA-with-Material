@@ -1,0 +1,63 @@
+<div [@slideInOut]="searchCriteria">
+
+  <form (ngSubmit)="onSubmit()">
+
+    <div fxLayout="row wrap" fxLayoutAlign.lt-md="start center" fxLayoutAlign.gt-sm="space-between center"
+      fxLayoutGap="32px" [ngClass.gt-sm]="{search:searchCriteria==='in', gtsm:searchCriteria==='in'}"
+      [ngClass.lt-md]="{search:searchCriteria==='in', ltmd:searchCriteria==='in'}">
+
+      <app-datepicker [(Date)]="dateFrom" [UserPrompt]="'from date'"></app-datepicker>
+
+      <app-datepicker [(Date)]="dateTo" [UserPrompt]="'to date'"></app-datepicker>
+
+      <div fxFlex.lt-md="60" fxFlex.gt-sm="25">
+        <mat-form-field fxFlexFill>
+          <input matInput name="containingText" [(ngModel)]="containingText" placeholder="enter point filter text">
+          <button mat-button *ngIf="containingText" matSuffix mat-icon-button aria-label="Clear"
+            (click)="containingText=''" type="button">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <button mat-stroked-button>
+          <mat-icon>search</mat-icon>
+          search
+        </button>
+      </div>
+
+    </div>
+
+  </form>
+
+</div>
+
+<div class="toolbar">
+
+  <button type="button" mat-stroked-button (click)="toggleNewPoint()" *ngIf="localData.IsSignedIn()">
+    <mat-icon>library_add</mat-icon>
+    new point
+  </button>
+
+  <button mat-stroked-button (click)="toggleSearchCriteria()">
+    <mat-icon *ngIf="searchCriteria=='out'">keyboard_arrow_down</mat-icon>
+    <mat-icon *ngIf="searchCriteria=='in'">keyboard_arrow_up</mat-icon>
+    {{ toggleText }}
+  </button>
+
+</div>
+
+<div *ngIf="error!=''" class="text-danger">
+  {{ error }}
+</div>
+
+<app-point-edit (CancelEdit)="CancelNew($event)" (CompleteEdit)="CompleteEdit($event)" *ngIf="newPoint">
+</app-point-edit>
+
+
+<div class="points">
+  <div *ngFor="let point of points">
+    <app-point [point]="point" (PointDeleted)="onPointDeleted($event)" (altTopicSelected)="altTopicSelected($event)"></app-point>
+  </div>
+</div>

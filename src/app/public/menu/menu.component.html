@@ -1,0 +1,15 @@
+<mat-toolbar color="accent" class="main-toolbar" [ngClass.xs]="'main-toolbar-xs'">
+
+  <span fxFlex></span>
+
+  <button mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">home</button>
+  <button mat-button [routerLink]="signedIn ? '/recent' : '/trending'" routerLinkActive="active">tags</button>
+  <button mat-button routerLink="/points" routerLinkActive="active">points</button>
+  <button mat-button routerLink="/my/details" routerLinkActive="active" *ngIf="signedIn">my</button>
+  <button mat-button routerLink="/join" *ngIf="!signedIn" routerLinkActive="active">join</button>
+  <button mat-button routerLink="/sign-in" *ngIf="!signedIn" routerLinkActive="active">sign in</button>
+  <button mat-button (click)="signOut()" *ngIf="signedIn">sign out</button>
+
+  <span fxFlex></span>
+
+</mat-toolbar>

@@ -1,0 +1,66 @@
+<mat-toolbar class="title" fxLayoutAlign="center center">
+  <h1>{{ appTitle }}</h1>
+</mat-toolbar>
+
+
+<mat-toolbar color="primary" *ngIf="appDataService.PageTitle !=='/'" fxLayoutAlign="center center">
+
+  <h1 data-toggle="tooltip" [title]="appDataService.PageTitleToolTip()" *ngIf="!enterSlashTag">
+    {{appDataService.PageTitle}}
+  </h1>
+
+  <mat-form-field appearance="standard" [fxShow]="enterSlashTag">
+    <input matInput placeholder="/slash tag" [(ngModel)]="slashTag" (keyup)="slashTagChanged()"
+      (keyup.enter)="showTagPoints()" #tvSlashTag>
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="editSlashTag(false)">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <button mat-button (click)="editSlashTag(true)" [fxHide]="enterSlashTag">
+    <mat-icon>edit</mat-icon>
+  </button>
+
+  <button mat-button *ngIf="enterSlashTag" (click)="showTagPoints()">
+    <mat-icon>search</mat-icon>
+  </button>
+
+</mat-toolbar>
+
+<app-menu></app-menu>
+
+<main>
+
+  <div fxLayout="row" fxLayoutAlign="center">
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- https://stackoverflow.com/questions/47829727/sticky-footer-at-bottom-in-angular -->
+<footer>
+
+  <div fxLayout="row" fxFlexFill [ngClass.xs]="'x-small'" [ngClass.sm]="'small'" [ngClass.gt-sm]="'gt-small'">
+
+    <div fxFlex fxHide.lt-sm></div>
+
+    <div fxFlex class="center">
+      <span class="align-middle" [ngClass.xs]="'xs-strapline'">
+        {{ strapline }}
+      </span>
+    </div>
+
+    <div fxFlex fxHide.xs>
+      <span fxFlex></span>
+      <span class="align-middle copyright">
+        © free.vote, 2019
+      </span>
+    </div>
+
+  </div>
+
+</footer>

@@ -1,0 +1,33 @@
+form { margin-top:50px; }
+
+.signIn { min-width:240px; max-width:440px; }
+
+mat-form-field { margin-right: 20px; }
+
+/* https://stackoverflow.com/questions/2781549/removing-input-background-colour-for-chrome-autocomplete */
+/* Change the white to any color ;) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    box-shadow: 0 0 0 30px white inset !important;
+}
+
+
+mat-error, .Feedback{
+    margin-top: 20px;
+}
+
+.date{ color:lightgray}
+
+/* Hidden attribute SHOULD be display none, however ... 
+https://github.com/angular/material2/issues/2669 */
+[hidden] {
+    display: none !important;
+}
+
+
+.IB { display:inline-block; vertical-align:middle; }
+
+.spinner { margin-left:10px; }

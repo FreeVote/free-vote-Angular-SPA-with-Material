@@ -1,0 +1,10 @@
+<mat-form-field class="topic-chip-list">
+  <mat-chip-list #topicsList>
+    <mat-chip *ngFor="let topic of Topics" selected removable color="accent" (removed)="remove(topic)">
+      {{topic}}
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+    <input placeholder="type new topic tag and press enter" [matChipInputFor]="topicsList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+</mat-form-field>

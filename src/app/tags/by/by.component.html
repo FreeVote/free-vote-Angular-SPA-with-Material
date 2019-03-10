@@ -1,0 +1,16 @@
+<div class="topics">
+  <ng-container *ngFor="let byAlias of byAliases, let i = index">
+    <a [innerHTML]="byAlias.byOn | TagDisplay"
+       [ngStyle]="{'font-size':FontSize(2),'padding-right':'10px'}"
+       (click)="clickByAlias(byAlias.byOn, i)"
+       [class.highlight]="hightlightStatus[i]"></a> 
+  </ng-container>
+</div>
+
+<div class="topics">
+  <ng-container *ngFor="let onTopic of onTopics">
+    <a [innerHTML]="onTopic.byOn | TagDisplay"
+       [ngStyle]="{'font-size':FontSize(2),'padding-right':'10px'}"
+       (click)="clickOnTopic(onTopic.byOn)"></a>
+  </ng-container>
+</div>
